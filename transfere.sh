@@ -11,7 +11,7 @@ FPATH=$4
 ENTRY=""
 
 entryssh() {
-    sshpass -p $PASS ssh $ENTRY "$1"
+    sshpass -p $PASS ssh $ENTRY "$1" > /dev/null 2>&1
 }
 
 while IFS=$'@' read -r servuser ip; do
