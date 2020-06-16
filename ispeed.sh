@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-DL_ICON='⬆️'
-UL_ICON='⬇️'
+DL_ICON='⬇️'
+UL_ICON='⬆️'
 
 notify-send -t 20000 '🌐 Checking your internet connection...' 'Please wait a moment'
 
