@@ -14,7 +14,7 @@ entryssh() {
     sshpass -p $PASS ssh $ENTRY "$1" > /dev/null 2>&1
 }
 
-while IFS=$'@' read -r servuser ip; do
+while IFS=$'@' read -r servuser ip || [ -n "$servuser" ]; do
     SUSER+=($servuser)
     ADDR+=($ip)
 done <"$NODES"
@@ -22,7 +22,7 @@ done <"$NODES"
 ENTRY="${SUSER[0]}@${ADDR[0]}"
 
 sshpass -p $PASS scp $FILE "$ENTRY":$FPATH &&
-    HEIGHT=$(echo `expr $(wc -l <$NODES) - 1`)
+    HEIGHT=$(echo `expr $(wc -l <$NODES)`)
     INDEX=1
 
 while [ $INDEX -le "$HEIGHT" ]
